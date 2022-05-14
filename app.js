@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const user = require("./Routes/user.routes")
+const auth = require("./Routes/auth.routes")
 const morgan = require("morgan");
 const connectDB = require("./config/db.config.js");
 const cors = require("cors");
@@ -21,8 +21,7 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
 
-//app.use("/api/v1/expense-tracker", verifyAuth, expense);
-app.use("/api/v1/", user);
+app.use("/api/v1/auth", auth);
 
 const PORT = process.env.PORT || 5000;
 
